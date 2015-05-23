@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><![CDATA[Jacken's Blog]]></title>
+  <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://jacken.me/"/>
+  <updated>2015-05-14T18:54:43.059Z</updated>
+  <id>http://jacken.me/</id>
+  
+  <author>
+    <name><![CDATA[Jacken]]></name>
+    <email><![CDATA[chenjacken@gmail.com]]></email>
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Hello World]]></title>
+    <link href="http://jacken.me/Hexo/hello-world/"/>
+    <id>http://jacken.me/Hexo/hello-world/</id>
+    <published>2015-05-14T18:44:45.000Z</published>
+    <updated>2015-05-14T18:54:43.059Z</updated>
+    <content type="html"><![CDATA[<p>新的博客</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>新的博客</p>
+]]>
+    </summary>
+    
+      <category term="Hello" scheme="http://jacken.me/tags/Hello/"/>
+    
+      <category term="Hexo" scheme="http://jacken.me/tags/Hexo/"/>
+    
+      <category term="Hexo" scheme="http://jacken.me/categories/Hexo/"/>
+    
+  </entry>
+  
+</feed>
