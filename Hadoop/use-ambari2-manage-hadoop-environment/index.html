@@ -18,10 +18,10 @@
 <meta property="og:url" content="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
 <meta property="og:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
-<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png,"Enterprise Hadoop：项目生态系统"">
-<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png,"Openstack云服务器"">
-<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png,"安装Ambari"">
-<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png,"repolist"">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Ambari2管理Hadoop_第一部分：环境">
 <meta name="twitter:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
@@ -120,7 +120,7 @@
 <li>一个神奇的网址<a id="more"></a>
 <h1 id="Hadoop生态圈">Hadoop生态圈</h1></li>
 </ul>
-<h2 id="生态系统">生态系统</h2><p>大量 <code>Apache Software Foundation</code> 项目构成 <code>Hadoop</code> 的生态系统，提供企业部署、集成和使用 <code>Hadoop</code> 所需的服务。这些项目中的每一个都经过部署，提供明确的功能，都有自己的开发人员群体和各自的发布周期。<br>你肯定也听过YARN、 Apache HBase、Apache Hive或者Apache Spark、Apache Storm，Apache Ambari也是喔，等等等…<br>没听过没有关系，看看以下的图片：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png,&quot;Enterprise Hadoop：项目生态系统&quot;" alt=""></p>
+<h2 id="生态系统">生态系统</h2><p>大量 <code>Apache Software Foundation</code> 项目构成 <code>Hadoop</code> 的生态系统，提供企业部署、集成和使用 <code>Hadoop</code> 所需的服务。这些项目中的每一个都经过部署，提供明确的功能，都有自己的开发人员群体和各自的发布周期。<br>你肯定也听过YARN、 Apache HBase、Apache Hive或者Apache Spark、Apache Storm，Apache Ambari也是喔，等等等…<br>没听过没有关系，看看以下的图片：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png" alt="Enterprise Hadoop：项目生态系统"></p>
 <p>看不懂图片没有关系，看看这个网址：<a href="http://zh.hortonworks.com/hadoop/" target="_blank" rel="external">http://zh.hortonworks.com/hadoop/</a></p>
 <p><strong>反正我是看不懂的。</strong></p>
 <h2 id="Hadoop发行版">Hadoop发行版</h2><p>Hadoop最早是始于<code>Yahoo</code>,但是现在主要是由 <code>HortonWorks</code> 和  <code>Cloudera</code> 这2家公司在维护者。<br><code>Hadoop</code> 发行版本将Hadoop生态系统所包含的不同项目打包在一起，提供打包、工具和商业支持。而这些不仅极大地简化了开发，而且也极大地简化了操作。脱颖而出的发行版有：</p>
@@ -129,7 +129,7 @@
 <li><strong>Hortonworks：</strong>拥有任何私有（非开源）修改地使用了100%开源Apache Hadoop的唯一提供商。<strong>因为开源，所以我喜欢。</strong></li>
 <li><strong>MapR：</strong>百度告诉你…</li>
 </ul>
-<h1 id="环境介绍">环境介绍</h1><p>我是在自建的 <code>Openstack</code> 创建云服务器。<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png,&quot;Openstack云服务器&quot;" alt=""></p>
+<h1 id="环境介绍">环境介绍</h1><p>我是在自建的 <code>Openstack</code> 创建云服务器。<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png" alt="Openstack云服务器"></p>
 <p>我创建云服务器时候，登录验证是采用密钥形式无密码SSH的，所以云服务器之间是可以通过秘钥无密码相互访问SSH的，Or not，你需要配置你服务器之间无密码SSH，请问百度君。</p>
 <h1 id="环境配置">环境配置</h1><p>讲了一堆废话，终于可以上机折腾了，这酸爽…</p>
 <h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体服务器都有，所有节点的服务器都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧。</p>
@@ -150,7 +150,7 @@ servie ip6tables <span class="keyword">stop</span>
 <span class="number">192.168</span>.<span class="number">111.11</span> node5<span class="class">.hdp</span><span class="class">.novalocal</span>
 <span class="number">192.168</span>.<span class="number">111.7</span> node6<span class="class">.hdp</span><span class="class">.novalocal</span>
 </code></pre><h3 id="安装JDK">安装JDK</h3><pre><code>rpm -iv jdk-<span class="number">8u</span>45-linux-x64.rpm
-</code></pre><p>JDK请到官网下载，<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html,&quot;下载Java SE&quot;" target="_blank" rel="external">Java SE Downloads</a></p>
+</code></pre><p>JDK请到官网下载，<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" title="下载Java SE" target="_blank" rel="external">Java SE Downloads</a></p>
 <h3 id="配置环境变量">配置环境变量</h3><pre><code><span class="keyword">vi</span> /etc/<span class="keyword">profile</span>
 </code></pre><p>编辑/etc/profile文件，在文件结尾增加内容：</p>
 <pre><code><span class="preprocessor">#for java by jacken</span>
@@ -172,7 +172,7 @@ vi /etc/rc<span class="variable">.local</span>
 <pre><code>wget -nv <span class="symbol">http:</span>/<span class="regexp">/public-repo-1.hortonworks.com/ambari</span><span class="regexp">/centos6/</span><span class="number">2</span>.x/updates/<span class="number">2.0</span>.<span class="number">1</span>/ambari.repo  -<span class="constant">O </span>/etc/yum.repos.d/ambari.repo
 </code></pre><p>安装Ambari</p>
 <pre><code>yum <span class="operator"><span class="keyword">install</span> ambari-<span class="keyword">server</span></span>
-</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png,&quot;安装Ambari&quot;" alt=""></p>
+</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png" alt="安装Ambari"></p>
 <h2 id="启动Ambari">启动Ambari</h2><pre><code>chkconfig ambari-server <span class="command"><span class="keyword">on</span></span>
 service ambari-server <span class="built_in">start</span>
 </code></pre><h2 id="本地yum源配置">本地yum源配置</h2><p>加快安装速度，提高安装成功率，建议配置本地yum源，源内容有两部分：</p>
@@ -184,7 +184,7 @@ service ambari-server <span class="built_in">start</span>
 </code></pre><p>创建源内容保存的目录</p>
 <pre><code>mkdir -p <span class="regexp">/var/</span>www<span class="regexp">/html/</span>
 </code></pre><h3 id="确定_Ambari_Repositories和HDP_Stack_Repositories是否存在">确定 Ambari Repositories和HDP Stack Repositories是否存在</h3><pre><code><span class="title">yum</span> repolist
-</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png,&quot;repolist&quot;" alt=""></p>
+</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png" alt="repolist"></p>
 <p>如果不存在，下载repo文件：</p>
 <pre><code>wget -nv <span class="string">http:</span><span class="comment">//public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.0.1/ambari.repo  -O /etc/yum.repos.d/ambari.repo</span>
 wget -nv <span class="string">http:</span><span class="comment">//public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.2.4.2/hdp.repo -O /etc/yum.repos.d/HDP.repo</span>
@@ -212,7 +212,7 @@ cd nginx-<span class="number">1.8</span>.<span class="number">0</span>
 <span class="comment">useradd</span> <span class="comment">www</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">www</span> <span class="literal">-</span><span class="comment">M</span> <span class="literal">-</span><span class="comment">s</span> <span class="comment">/sbin/nologin</span>
 <span class="string">.</span><span class="comment">/configure</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix=/opt/nginx</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">user=www</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">group=www</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_ssl_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_stub_status_module</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">with</span><span class="literal">-</span><span class="comment">http_sub_module</span>
 <span class="comment">make</span> <span class="comment">&amp;&amp;</span> <span class="comment">make</span> <span class="comment">install</span>
-</code></pre><p>编辑/opt/nginx/config/nginx.cnf文件，内容请参考<a href="http://7xj3vi.com1.z0.glb.clouddn.com/nginx.conf,&quot;nginx.conf参考&quot;" target="_blank" rel="external">nginx.conf</a><br>同时，把Nginx增加到系统服务，实现开机自动开启。<br>编辑/etc/init.d/nginx文件，内容请参考<a href="http://7xj3vi.com1.z0.glb.clouddn.com/nginx,&quot;nginx服务脚本&quot;" target="_blank" rel="external">nginx</a></p>
+</code></pre><p>编辑/opt/nginx/config/nginx.cnf文件，内容请参考<a href="http://7xj3vi.com1.z0.glb.clouddn.com/nginx.conf" title="nginx.conf参考" target="_blank" rel="external">nginx.conf</a><br>同时，把Nginx增加到系统服务，实现开机自动开启。<br>编辑/etc/init.d/nginx文件，内容请参考<a href="http://7xj3vi.com1.z0.glb.clouddn.com/nginx" title="nginx服务脚本" target="_blank" rel="external">nginx</a></p>
 <pre><code>chmod <span class="operator">a</span>+x /etc/init.d/nginx
 chkconfig <span class="comment">--add nginx</span>
 chkconfig nginx <span class="command"><span class="keyword">on</span></span>
