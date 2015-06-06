@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-06-06T19:52:45.175Z</updated>
+  <updated>2015-06-06T19:54:26.493Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</id>
     <published>2015-06-06T13:33:36.000Z</published>
-    <updated>2015-06-06T19:52:45.175Z</updated>
+    <updated>2015-06-06T19:54:26.493Z</updated>
     <content type="html"><![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
 <hr>
 <p><strong>本部分内容</strong></p>
@@ -98,7 +98,7 @@ service ambari-server <span class="built_in">start</span>
 <h3 id="安装yum工具">安装yum工具</h3><pre><code>yum <span class="keyword">install</span> yum-utils createrepo
 </code></pre><p>创建源内容保存的目录</p>
 <pre><code>mkdir -p <span class="regexp">/var/</span>www<span class="regexp">/html/</span>
-</code></pre><h3 id="确定_Ambari_Repositories和HDP_Stack_Repositories是否存在">确定 Ambari Repositories和HDP Stack Repositories是否存在</h3><pre><code><span class="title">yum</span> repolist
+</code></pre><h3 id="确定_Ambari和HDP_Stack源是否存在">确定 Ambari和HDP Stack源是否存在</h3><pre><code><span class="title">yum</span> repolist
 </code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png" alt="repolist"></p>
 <p>如果不存在，下载repo文件：</p>
 <pre><code>wget -nv <span class="string">http:</span><span class="comment">//public-repo-1.hortonworks.com/ambari/centos6/2.x/updates/2.0.1/ambari.repo  -O /etc/yum.repos.d/ambari.repo</span>
