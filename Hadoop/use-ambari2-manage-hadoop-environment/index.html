@@ -158,8 +158,8 @@ J<span class="built_in">AVA_HOME</span>=/usr/java/<span class="keyword">default<
 J<span class="built_in">AVA</span>=$J<span class="built_in">AVA_HOME</span>/bin
 <span class="keyword">export</span> J<span class="built_in">AVA_HOME</span>=$J<span class="built_in">AVA_HOME</span>
 <span class="keyword">export</span> PATH=$PATH:$J<span class="built_in">AVA</span>
-
-vi /etc/rc<span class="variable">.local</span>
+</code></pre><p>.</p>
+<pre><code>vi /etc/rc.<span class="keyword">local</span>
 </code></pre><p>编辑/etc/rc.local文件，在文件结尾增加内容：</p>
 <pre><code><span class="keyword">if</span> <span class="built_in">test</span> <span class="operator">-f</span> /sys/kernel/mm/transparent_hugepage/enabled; <span class="keyword">then</span>
        <span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/enabled

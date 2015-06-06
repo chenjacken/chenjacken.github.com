@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-06-06T20:00:46.247Z</updated>
+  <updated>2015-06-06T20:05:20.746Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</id>
     <published>2015-06-06T13:33:36.000Z</published>
-    <updated>2015-06-06T20:00:46.247Z</updated>
+    <updated>2015-06-06T20:05:20.746Z</updated>
     <content type="html"><![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能和像我一样的新手分享经验，同时也希望得到高人指点一二三四五… </p>
 <hr>
 <p><strong>本部分内容</strong></p>
@@ -73,8 +73,8 @@ J<span class="built_in">AVA_HOME</span>=/usr/java/<span class="keyword">default<
 J<span class="built_in">AVA</span>=$J<span class="built_in">AVA_HOME</span>/bin
 <span class="keyword">export</span> J<span class="built_in">AVA_HOME</span>=$J<span class="built_in">AVA_HOME</span>
 <span class="keyword">export</span> PATH=$PATH:$J<span class="built_in">AVA</span>
-
-vi /etc/rc<span class="variable">.local</span>
+</code></pre><p>.</p>
+<pre><code>vi /etc/rc.<span class="keyword">local</span>
 </code></pre><p>编辑/etc/rc.local文件，在文件结尾增加内容：</p>
 <pre><code><span class="keyword">if</span> <span class="built_in">test</span> <span class="operator">-f</span> /sys/kernel/mm/transparent_hugepage/enabled; <span class="keyword">then</span>
        <span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/enabled
