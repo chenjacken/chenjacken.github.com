@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-06-06T19:56:21.982Z</updated>
+  <updated>2015-06-06T19:57:14.465Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</id>
     <published>2015-06-06T13:33:36.000Z</published>
-    <updated>2015-06-06T19:56:21.982Z</updated>
+    <updated>2015-06-06T19:57:14.465Z</updated>
     <content type="html"><![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
 <hr>
 <p><strong>本部分内容</strong></p>
@@ -139,8 +139,8 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 <span class="setting">gpgcheck=<span class="value"><span class="number">0</span></span></span>
 <span class="setting">enabled=<span class="value"><span class="number">1</span></span></span>
 <span class="setting">priority=<span class="value"><span class="number">1</span></span></span>
-</code></pre><h1 id="一个神奇的网站">一个神奇的网站</h1><p> <code>http://</code><your.ambari.server\><code>:8080</code>,例如我的是<a href="http://172.16.1.140:8080" target="_blank" rel="external">http://172.16.1.140:8080</a></your.ambari.server\></p>
-<p>你可以通过这个网站来部署、管理和监控你的Hadoop。对了偷偷告诉你，网站的默认管理员账号和密码是<code>admin/admin</code>。</p>
+</code></pre><h1 id="一个神奇的网站">一个神奇的网站</h1><p> <code>http://</code>\<your.ambari.server\><code>:8080</code>,例如我的是<a href="http://172.16.1.140:8080" target="_blank" rel="external">http://172.16.1.140:8080</a></your.ambari.server\></p>
+<p>你可以通过这个网站来部署、管理和监控你的Hadoop。<br>对了偷偷告诉你，网站的默认管理员账号和密码是<code>admin/admin</code>。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
