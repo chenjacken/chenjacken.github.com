@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-06-06T19:48:45.683Z</updated>
+  <updated>2015-06-06T19:49:27.333Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</id>
     <published>2015-06-06T13:33:36.000Z</published>
-    <updated>2015-06-06T19:48:45.683Z</updated>
+    <updated>2015-06-06T19:49:27.333Z</updated>
     <content type="html"><![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
 <hr>
 <p><strong>本部分内容</strong></p>
@@ -32,9 +32,10 @@
 <li>本地yum源配置</li>
 </ul>
 </li>
-<li>一个神奇的网址</li>
+<li>一个神奇的网址<a id="more"></a>
+<h1 id="Hadoop生态圈">Hadoop生态圈</h1></li>
 </ul>
-<h1 id="Hadoop生态圈">Hadoop生态圈</h1><h2 id="生态系统">生态系统</h2><p>大量 <code>Apache Software Foundation</code> 项目构成 <code>Hadoop</code> 的生态系统，提供企业部署、集成和使用 <code>Hadoop</code> 所需的服务。这些项目中的每一个都经过部署，提供明确的功能，都有自己的开发人员群体和各自的发布周期。<br>你肯定也听过YARN、 Apache HBase、Apache Hive或者Apache Spark、Apache Storm，Apache Ambari也是喔，等等等…<br>没听过没有关系，看看以下的图片：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png,&quot;Enterprise Hadoop：项目生态系统&quot;" alt=""></p>
+<h2 id="生态系统">生态系统</h2><p>大量 <code>Apache Software Foundation</code> 项目构成 <code>Hadoop</code> 的生态系统，提供企业部署、集成和使用 <code>Hadoop</code> 所需的服务。这些项目中的每一个都经过部署，提供明确的功能，都有自己的开发人员群体和各自的发布周期。<br>你肯定也听过YARN、 Apache HBase、Apache Hive或者Apache Spark、Apache Storm，Apache Ambari也是喔，等等等…<br>没听过没有关系，看看以下的图片：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png,&quot;Enterprise Hadoop：项目生态系统&quot;" alt=""></p>
 <p>看不懂图片没有关系，看看这个网址：<a href="http://zh.hortonworks.com/hadoop/" target="_blank" rel="external">http://zh.hortonworks.com/hadoop/</a></p>
 <p><strong>反正我是看不懂的。</strong></p>
 <h2 id="Hadoop发行版">Hadoop发行版</h2><p>Hadoop最早是始于<code>Yahoo</code>,但是现在主要是由 <code>HortonWorks</code> 和  <code>Cloudera</code> 这2家公司在维护者。<br><code>Hadoop</code> 发行版本将Hadoop生态系统所包含的不同项目打包在一起，提供打包、工具和商业支持。而这些不仅极大地简化了开发，而且也极大地简化了操作。脱颖而出的发行版有：</p>
@@ -142,7 +143,20 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 <p>你可以通过这个网站来部署、管理和监控你的Hadoop。对了偷偷告诉你，网站的默认管理员账号和密码是<code>admin/admin</code>。</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>]]>
+    <![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
+<hr>
+<p><strong>本部分内容</strong></p>
+<ul>
+<li>Hadoop生态圈</li>
+<li>本系类文章的环境介绍</li>
+<li>Ambari安装<ul>
+<li>所有节点基础配置</li>
+<li>Ambari安装</li>
+<li>本地yum源配置</li>
+</ul>
+</li>
+<li>一个神奇的网址]]>
+    
     </summary>
     
       <category term="ambari" scheme="http://jacken.me/tags/ambari/"/>
