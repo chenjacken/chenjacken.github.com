@@ -12,19 +12,19 @@
     
 
     
-    <meta name="description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
+    <meta name="description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Ambari2管理Hadoop_第一部分：环境">
 <meta property="og:url" content="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
-<meta property="og:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
+<meta property="og:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Ambari2管理Hadoop_第一部分：环境">
-<meta name="twitter:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
+<meta name="twitter:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数">
 
     
     <link rel="alternative" href="/atom.xml" title="Jacken&#39;s Blog" type="application/atom+xml">
@@ -105,7 +105,7 @@
 		
 		</div>
 		
-		<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
+		<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能和像我一样的新手分享经验，同时也希望得到高人指点一二三四五… </p>
 <hr>
 <p><strong>本部分内容</strong></p>
 <ul>
