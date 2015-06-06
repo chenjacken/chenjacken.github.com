@@ -5,22 +5,26 @@
   <meta charset="UTF-8">
   <meta name="baidu-site-verification" content="amOFAugynl" />
   
-    <title>Jacken&#39;s Blog</title>
+    <title>用Ambari2管理Hadoop_第一部分：环境 | Jacken&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jacken">
     
 
     
-    <meta name="description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacken's Blog">
-<meta property="og:url" content="http://jacken.me/index.html">
+    <meta name="description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Ambari2管理Hadoop_第一部分：环境">
+<meta property="og:url" content="http://jacken.me/uncategorized/use-ambari2-manage-hadoop-environment/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
-<meta property="og:description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
+<meta property="og:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png,"Enterprise Hadoop：项目生态系统"">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png,"Openstack云服务器"">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png,"安装Ambari"">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png,"repolist"">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacken's Blog">
-<meta name="twitter:description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
+<meta name="twitter:title" content="用Ambari2管理Hadoop_第一部分：环境">
+<meta name="twitter:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理">
 
     
     <link rel="alternative" href="/atom.xml" title="Jacken&#39;s Blog" type="application/atom+xml">
@@ -75,12 +79,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/uncategorized/use-ambari2-manage-hadoop-environment/" title="用Ambari2管理Hadoop_第一部分：环境" itemprop="url">用Ambari2管理Hadoop_第一部分：环境</a>
@@ -94,9 +96,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本系列文章说明"><span class="toc-number">1.</span> <span class="toc-text">本系列文章说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop生态圈"><span class="toc-number">2.</span> <span class="toc-text">Hadoop生态圈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生态系统"><span class="toc-number">2.1.</span> <span class="toc-text">生态系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop发行版"><span class="toc-number">2.2.</span> <span class="toc-text">Hadoop发行版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境介绍"><span class="toc-number">3.</span> <span class="toc-text">环境介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境配置"><span class="toc-number">4.</span> <span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#所有节点基础配置"><span class="toc-number">4.1.</span> <span class="toc-text">所有节点基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新系统"><span class="toc-number">4.1.1.</span> <span class="toc-text">更新系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁用Selinux"><span class="toc-number">4.1.2.</span> <span class="toc-text">禁用Selinux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">4.1.3.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改hosts，本地解析DNS"><span class="toc-number">4.1.4.</span> <span class="toc-text">修改hosts，本地解析DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JDK"><span class="toc-number">4.1.5.</span> <span class="toc-text">安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-number">4.1.6.</span> <span class="toc-text">配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ambari安装"><span class="toc-number">4.2.</span> <span class="toc-text">Ambari安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动Ambari"><span class="toc-number">4.3.</span> <span class="toc-text">启动Ambari</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地yum源配置"><span class="toc-number">4.4.</span> <span class="toc-text">本地yum源配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装yum工具"><span class="toc-number">4.4.1.</span> <span class="toc-text">安装yum工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#确定_Ambari_Repositories和HDP_Stack_Repositories是否存在"><span class="toc-number">4.4.2.</span> <span class="toc-text">确定 Ambari Repositories和HDP Stack Repositories是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步源内容到本地"><span class="toc-number">4.4.3.</span> <span class="toc-text">同步源内容到本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译安装Nginx"><span class="toc-number">4.4.4.</span> <span class="toc-text">编译安装Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地源的信息"><span class="toc-number">4.4.5.</span> <span class="toc-text">本地源的信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个神奇的网站"><span class="toc-number">5.</span> <span class="toc-text">一个神奇的网站</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的!因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐吧。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能给像我一样的新手分享经验，同时也希望得到高人指点一二三四五。  </p>
 <hr>
 <p><strong>本部分内容</strong></p>
 <ul>
@@ -216,14 +225,9 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 <span class="setting">priority=<span class="value"><span class="number">1</span></span></span>
 </code></pre><h1 id="一个神奇的网站">一个神奇的网站</h1><p> <code>http://</code><your.ambari.server><code>:8080</code>,例如我的是<a href="http://172.16.1.140:8080" target="_blank" rel="external">http://172.16.1.140:8080</a></your.ambari.server></p>
 <p>你可以通过这个网站来部署、管理和监控你的Hadoop。对了偷偷告诉你，网站的默认管理员账号和密码是<code>admin/admin</code>。</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -236,93 +240,70 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-	  	<span></span>
-		<a href="/uncategorized/use-ambari2-manage-hadoop-environment/#comments" class="ds-thread-count comments-count-link" data-thread-key="uncategorized/use-ambari2-manage-hadoop-environment/" data-count-type="comments">&nbsp;</a>
-	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"1868139773"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+891939" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Hexo/hello-world/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jacken" target="_blank" itemprop="author">Jacken</a>
-		
-  <p class="article-time">
-    <time datetime="2015-05-14T18:44:45.000Z" itemprop="datePublished"> Published 2015-05-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="又一个博客">又一个博客</h1><p>以前一直有写博客，博客使用<code>WordPress</code>搭建的。写一段时间后，写作热情下降且空间过期，懒得继续折腾而终止，总是持续不了。</p>
-<p>最近接触很多新的知识和技术，一直记录在<code>Evernote</code>，且记录得有些凌乱，借此重出江湖，借此整理好感兴趣的内容并发表到博客上，方便自己查看同时也有一丝开源分享的精神，互相学习吧。</p>
-<p>理所当然，本博客所有文章默认都遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="" title="BY-NC-SA"></a>；如发现文章对你有侵权嫌疑，请联系我。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/Hexo/hello-world/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Hello/">Hello</a><a href="/tags/Hexo/">Hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
-	  	<span></span>
-		<a href="/Hexo/hello-world/#comments" class="ds-thread-count comments-count-link" data-thread-key="Hexo/hello-world/" data-count-type="comments">&nbsp;</a>
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Hexo/hello-world/"  title="Hello World">
+ <strong>下一篇：</strong><br/> 
+ <span>Hello World
+</span>
+</a>
+</div>
+
+</nav>
+
 	
-</div>
-
-</footer>
-
-
-    </article>
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="uncategorized/use-ambari2-manage-hadoop-environment/" data-title="用Ambari2管理Hadoop_第一部分：环境" data-url="http://jacken.me/uncategorized/use-ambari2-manage-hadoop-environment/"></div>
+</section>
 
 
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#本系列文章说明"><span class="toc-number">1.</span> <span class="toc-text">本系列文章说明</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hadoop生态圈"><span class="toc-number">2.</span> <span class="toc-text">Hadoop生态圈</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生态系统"><span class="toc-number">2.1.</span> <span class="toc-text">生态系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hadoop发行版"><span class="toc-number">2.2.</span> <span class="toc-text">Hadoop发行版</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境介绍"><span class="toc-number">3.</span> <span class="toc-text">环境介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境配置"><span class="toc-number">4.</span> <span class="toc-text">环境配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#所有节点基础配置"><span class="toc-number">4.1.</span> <span class="toc-text">所有节点基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#更新系统"><span class="toc-number">4.1.1.</span> <span class="toc-text">更新系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#禁用Selinux"><span class="toc-number">4.1.2.</span> <span class="toc-text">禁用Selinux</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关闭防火墙"><span class="toc-number">4.1.3.</span> <span class="toc-text">关闭防火墙</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改hosts，本地解析DNS"><span class="toc-number">4.1.4.</span> <span class="toc-text">修改hosts，本地解析DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#安装JDK"><span class="toc-number">4.1.5.</span> <span class="toc-text">安装JDK</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境变量"><span class="toc-number">4.1.6.</span> <span class="toc-text">配置环境变量</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ambari安装"><span class="toc-number">4.2.</span> <span class="toc-text">Ambari安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动Ambari"><span class="toc-number">4.3.</span> <span class="toc-text">启动Ambari</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地yum源配置"><span class="toc-number">4.4.</span> <span class="toc-text">本地yum源配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装yum工具"><span class="toc-number">4.4.1.</span> <span class="toc-text">安装yum工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#确定_Ambari_Repositories和HDP_Stack_Repositories是否存在"><span class="toc-number">4.4.2.</span> <span class="toc-text">确定 Ambari Repositories和HDP Stack Repositories是否存在</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#同步源内容到本地"><span class="toc-number">4.4.3.</span> <span class="toc-text">同步源内容到本地</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#编译安装Nginx"><span class="toc-number">4.4.4.</span> <span class="toc-text">编译安装Nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#本地源的信息"><span class="toc-number">4.4.5.</span> <span class="toc-text">本地源的信息</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一个神奇的网站"><span class="toc-number">5.</span> <span class="toc-text">一个神奇的网站</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -464,8 +445,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -590,4 +599,4 @@ _ts(option);
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
