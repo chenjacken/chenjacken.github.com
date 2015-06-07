@@ -222,13 +222,6 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/192.168.111.5/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>  
 </code></pre><p>HDP-UTILS Base URL：</p>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/192.168.111.5/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-UTILS-</span><span class="number">1.1</span>.<span class="number">0</span>.<span class="number">20</span>  
-</code></pre><p>把Ambari修改成本地的源。<br>编辑/etc/yum.repos.d/ambari.repo文件，内容如下：</p>
-<pre><code><span class="title">[Updates-ambari-2.0.1]</span>
-<span class="setting">name=<span class="value">ambari-<span class="number">2.0</span>.<span class="number">1</span> - Updates</span></span>
-<span class="setting">baseurl=<span class="value">http://<span class="number">192.168</span>.<span class="number">111.5</span>/ambari/centos6/Updates-ambari-<span class="number">2.0</span>.<span class="number">1</span></span></span>
-<span class="setting">gpgcheck=<span class="value"><span class="number">0</span></span></span>
-<span class="setting">enabled=<span class="value"><span class="number">1</span></span></span>
-<span class="setting">priority=<span class="value"><span class="number">1</span></span></span>
 </code></pre><h1 id="一个神奇的网站">一个神奇的网站</h1><p> <code>http://</code>your.ambari.server<code>:8080</code>,例如我的是<a href="http://172.16.1.140:8080" target="_blank" rel="external">http://172.16.1.140:8080</a></p>
 <p>你可以通过这个网站来部署、管理和监控你的Hadoop。<br>对了偷偷告诉你，网站的默认管理员账号和密码是<code>admin/admin</code>。</p>
   
