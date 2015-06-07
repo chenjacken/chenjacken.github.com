@@ -217,15 +217,15 @@ cd nginx-<span class="number">1.8</span>.<span class="number">0</span>
 chkconfig <span class="comment">--add nginx</span>
 chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 </code></pre><h3 id="本地源的信息">本地源的信息</h3><p>URLs for the New Repository，要记住，往后需要用到<br>Ambari Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/ambari</span><span class="regexp">/centos6/</span><span class="constant">Updates-</span>ambari-<span class="number">2.0</span>.<span class="number">1</span>  
+<pre><code><span class="symbol">http:</span>/<span class="regexp">/192.168.111.5/ambari</span><span class="regexp">/centos6/</span><span class="constant">Updates-</span>ambari-<span class="number">2.0</span>.<span class="number">1</span>  
 </code></pre><p>HDP Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>  
+<pre><code><span class="symbol">http:</span>/<span class="regexp">/192.168.111.5/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>  
 </code></pre><p>HDP-UTILS Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-UTILS-</span><span class="number">1.1</span>.<span class="number">0</span>.<span class="number">20</span>  
+<pre><code><span class="symbol">http:</span>/<span class="regexp">/192.168.111.5/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-UTILS-</span><span class="number">1.1</span>.<span class="number">0</span>.<span class="number">20</span>  
 </code></pre><p>把Ambari修改成本地的源。<br>编辑/etc/yum.repos.d/ambari.repo文件，内容如下：</p>
 <pre><code><span class="title">[Updates-ambari-2.0.1]</span>
 <span class="setting">name=<span class="value">ambari-<span class="number">2.0</span>.<span class="number">1</span> - Updates</span></span>
-<span class="setting">baseurl=<span class="value">http://ambari.hdp.novalocal/ambari/centos6/Updates-ambari-<span class="number">2.0</span>.<span class="number">1</span></span></span>
+<span class="setting">baseurl=<span class="value">http://<span class="number">192.168</span>.<span class="number">111.5</span>/ambari/centos6/Updates-ambari-<span class="number">2.0</span>.<span class="number">1</span></span></span>
 <span class="setting">gpgcheck=<span class="value"><span class="number">0</span></span></span>
 <span class="setting">enabled=<span class="value"><span class="number">1</span></span></span>
 <span class="setting">priority=<span class="value"><span class="number">1</span></span></span>
