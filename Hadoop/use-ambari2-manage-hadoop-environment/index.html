@@ -20,6 +20,7 @@
 <meta property="og:description" content="本系列文章说明当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看Evernote记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hdp.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/transparent_hugepage_issues.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/repolist.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png">
 <meta name="twitter:card" content="summary">
@@ -130,6 +131,12 @@
 <li><strong>MapR：</strong>百度告诉你…</li>
 </ul>
 <h1 id="环境介绍">环境介绍</h1><p>我是在自建的 <code>Openstack</code> 创建云服务器。<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/hadoop-servers.png" alt="Openstack云服务器"></p>
+<ul>
+<li><strong>Ambari Server：</strong>用来安装Ambari，一站式部署、管理和监控Hadoop</li>
+<li><strong>DB Server：</strong>独立一台服务器用做数据库服务器，安装Mysql6.6</li>
+<li><strong>Node1~Node9：</strong>安装Hadoop以及生态系统</li>
+</ul>
+<p>所有服务器安装Centos6.6-64Bit-minimal，当然我这里用的是自制的Openstack的Centos6.6-64Bit-minimal镜像。</p>
 <p>我创建云服务器时候，登录验证是采用密钥形式无密码SSH的，所以云服务器之间是可以通过秘钥无密码相互访问SSH的，Or not，你需要配置你服务器之间无密码SSH，请问百度君。</p>
 <h1 id="环境配置">环境配置</h1><p>讲了一堆废话，终于可以上机折腾了，这酸爽…</p>
 <h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体服务器都有，所有节点的服务器都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧。</p>
@@ -152,6 +159,7 @@ chkconfig ip6tables off
 <span class="number">192.168</span>.<span class="number">111.12</span> node7<span class="class">.hdp</span><span class="class">.novalocal</span>
 <span class="number">192.168</span>.<span class="number">111.13</span> node8<span class="class">.hdp</span><span class="class">.novalocal</span>
 <span class="number">192.168</span>.<span class="number">111.14</span> node9<span class="class">.hdp</span><span class="class">.novalocal</span>
+<span class="number">192.168</span>.<span class="number">111.15</span> db<span class="class">.hdp</span><span class="class">.novalocal</span>
 </code></pre><h3 id="安装JDK">安装JDK</h3><pre><code>rpm -iv jdk-<span class="number">8u</span>45-linux-x64.rpm
 </code></pre><p>JDK请到官网下载，<a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" title="下载Java SE" target="_blank" rel="external">Java SE Downloads</a></p>
 <h3 id="配置环境变量">配置环境变量</h3><pre><code><span class="keyword">vi</span> /etc/<span class="keyword">profile</span>
@@ -161,9 +169,10 @@ J<span class="built_in">AVA_HOME</span>=/usr/java/<span class="keyword">default<
 J<span class="built_in">AVA</span>=$J<span class="built_in">AVA_HOME</span>/bin
 <span class="keyword">export</span> J<span class="built_in">AVA_HOME</span>=$J<span class="built_in">AVA_HOME</span>
 <span class="keyword">export</span> PATH=$PATH:$J<span class="built_in">AVA</span>
-</code></pre><p>.</p>
+</code></pre><p>关闭，不使用透明内存。配置<code>transparent huge page</code>的参数，如果不设置，安装过程会有如下的检验错误：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/transparent_hugepage_issues.png" alt="transparent_hugepage_issues"></p>
+<p>编辑/etc/rc.local文件</p>
 <pre><code>vi /etc/rc.<span class="keyword">local</span>
-</code></pre><p>编辑/etc/rc.local文件，在文件结尾增加内容：</p>
+</code></pre><p>在文件结尾增加内容：</p>
 <pre><code><span class="keyword">if</span> <span class="built_in">test</span> <span class="operator">-f</span> /sys/kernel/mm/transparent_hugepage/enabled; <span class="keyword">then</span>
        <span class="built_in">echo</span> never &gt; /sys/kernel/mm/transparent_hugepage/enabled
 <span class="keyword">fi</span>
