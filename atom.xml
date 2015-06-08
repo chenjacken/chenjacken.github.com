@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-06-08T08:26:29.586Z</updated>
+  <updated>2015-06-08T08:34:21.496Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</id>
     <published>2015-06-06T13:33:36.000Z</published>
-    <updated>2015-06-08T08:26:29.586Z</updated>
+    <updated>2015-06-08T08:34:21.496Z</updated>
     <content type="html"><![CDATA[<h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能和像我一样的新手分享经验，同时也希望得到高人指点一二三四五… </p>
 <hr>
 <p><strong>本部分内容</strong></p>
@@ -51,10 +51,10 @@
 <h3 id="更新系统">更新系统</h3><pre><code><span class="title">yum</span> upgrade -y
 </code></pre><h3 id="禁用Selinux">禁用Selinux</h3><pre><code>vi <span class="regexp">/etc/</span>sysconfig<span class="regexp">/selinux</span>
 </code></pre><p>编辑/etc/sysconfig/selinux文件，把SELINUX的值设置为<code>disabled</code></p>
-<h3 id="关闭防火墙">关闭防火墙</h3><pre><code>chkconfig iptables <span class="keyword">off</span>
-chkconfig ip6tables <span class="keyword">off</span>
-servie iptables <span class="keyword">stop</span>
-servie ip6tables <span class="keyword">stop</span>
+<h3 id="关闭防火墙">关闭防火墙</h3><pre><code>chkconfig iptables off
+chkconfig ip6tables off
+<span class="keyword">service</span> iptables <span class="literal">stop</span>
+<span class="keyword">service</span> ip6tables <span class="literal">stop</span>
 </code></pre><h3 id="修改hosts，本地解析DNS">修改hosts，本地解析DNS</h3><pre><code>vi <span class="regexp">/etc/</span>hosts
 </code></pre><p>编辑/etc/hosts，增加内容如下：</p>
 <pre><code><span class="number">192.168</span>.<span class="number">111.5</span> ambari<span class="class">.hdp</span><span class="class">.novalocal</span>

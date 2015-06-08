@@ -136,10 +136,10 @@
 <h3 id="更新系统">更新系统</h3><pre><code><span class="title">yum</span> upgrade -y
 </code></pre><h3 id="禁用Selinux">禁用Selinux</h3><pre><code>vi <span class="regexp">/etc/</span>sysconfig<span class="regexp">/selinux</span>
 </code></pre><p>编辑/etc/sysconfig/selinux文件，把SELINUX的值设置为<code>disabled</code></p>
-<h3 id="关闭防火墙">关闭防火墙</h3><pre><code>chkconfig iptables <span class="keyword">off</span>
-chkconfig ip6tables <span class="keyword">off</span>
-servie iptables <span class="keyword">stop</span>
-servie ip6tables <span class="keyword">stop</span>
+<h3 id="关闭防火墙">关闭防火墙</h3><pre><code>chkconfig iptables off
+chkconfig ip6tables off
+<span class="keyword">service</span> iptables <span class="literal">stop</span>
+<span class="keyword">service</span> ip6tables <span class="literal">stop</span>
 </code></pre><h3 id="修改hosts，本地解析DNS">修改hosts，本地解析DNS</h3><pre><code>vi <span class="regexp">/etc/</span>hosts
 </code></pre><p>编辑/etc/hosts，增加内容如下：</p>
 <pre><code><span class="number">192.168</span>.<span class="number">111.5</span> ambari<span class="class">.hdp</span><span class="class">.novalocal</span>
