@@ -139,7 +139,7 @@
 <p>所有服务器安装Centos6.6-64Bit-minimal，当然我这里用的是自制的Openstack的Centos6.6-64Bit-minimal镜像。</p>
 <p>我创建云服务器时候，登录验证是采用密钥形式无密码SSH的，所以云服务器之间是可以通过秘钥无密码相互访问SSH的，Or not，你需要配置你服务器之间无密码SSH，请问百度君。</p>
 <h1 id="环境配置">环境配置</h1><p>讲了一堆废话，终于可以上机折腾了，这酸爽…</p>
-<h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体服务器都有，所有节点的服务器都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧。</p>
+<h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体节点的服务器（<code>node1~node9</code>）都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧。</p>
 <h3 id="更新系统">更新系统</h3><pre><code><span class="title">yum</span> upgrade -y
 </code></pre><h3 id="禁用Selinux">禁用Selinux</h3><pre><code>vi <span class="regexp">/etc/</span>sysconfig<span class="regexp">/selinux</span>
 </code></pre><p>编辑/etc/sysconfig/selinux文件，把SELINUX的值设置为<code>disabled</code></p>
@@ -237,9 +237,10 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 <pre><code><span class="keyword">yum</span> clean <span class="literal">all</span>
 </code></pre><h2 id="Ambari安装">Ambari安装</h2><p>这部分是在<code>ambari.hdp.novalocal</code>服务器上配置，其他节点无需操作。</p>
 <p>安装Ambari</p>
-<pre><code>yum <span class="operator"><span class="keyword">install</span> ambari-<span class="keyword">server</span>
-ambari-<span class="keyword">server</span> setup -j /usr/java/<span class="keyword">default</span></span>
-</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png" alt="安装Ambari"></p>
+<pre><code>yum <span class="operator"><span class="keyword">install</span> ambari-<span class="keyword">server</span></span>
+</code></pre><p>我计划用Mysql作为数据库存储hive和oozie数据，下载Mysql的驱动（<a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="external">http://dev.mysql.com/downloads/connector/j/</a>），解压放在/usr/share/java/mysql-connector-java-5.1.35-bin.jar。<br>在<code>db.hdp.novalocal</code>节点安装和配置Mysql 5.6，并创建名为<code>ambari</code>的数据库，执行<code>ambari.hdp.novalocal</code>上的<code>/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql</code>SQL脚本来初始化表结构。<br>配置Ambari Server:</p>
+<pre><code>ambari-<span class="keyword">server</span> setup -j /usr/java/<span class="keyword">default</span>
+</code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png" alt="安装Ambari"><br>根据提示一直按回车，配置数据库时候需要指定<code>db.hdp.novalocal</code>的连接信息，至此，配置<code>Ambari Server</code>成功。</p>
 <h2 id="启动Ambari">启动Ambari</h2><pre><code>chkconfig ambari-server <span class="command"><span class="keyword">on</span></span>
 service ambari-server <span class="built_in">start</span>
 </code></pre><h1 id="一个神奇的网站">一个神奇的网站</h1><p> <code>http://</code>your.ambari.server<code>:8080</code>,例如我的是<a href="http://172.16.1.140:8080" target="_blank" rel="external">http://172.16.1.140:8080</a></p>
