@@ -5,25 +5,19 @@
   <meta charset="UTF-8">
   <meta name="baidu-site-verification" content="amOFAugynl" />
   
-    <title>用Ambari2管理Hadoop_第一部分：部署 | Jacken&#39;s Blog</title>
+    <title>用Ambari2管理Hadoop_第二部分：部署 | Jacken&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jacken">
     
 
     
-    <meta name="description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
-创建一个集群，点击Launch Install Wizard
-起一个集群的名称，例如Education
-Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
+    <meta name="description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Ambari2管理Hadoop_第一部分：部署">
+<meta property="og:title" content="用Ambari2管理Hadoop_第二部分：部署">
 <meta property="og:url" content="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
-<meta property="og:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
-创建一个集群，点击Launch Install Wizard
-起一个集群的名称，例如Education
-Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
+<meta property="og:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png">
@@ -44,11 +38,8 @@ Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选�
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-start-test.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用Ambari2管理Hadoop_第一部分：部署">
-<meta name="twitter:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
-创建一个集群，点击Launch Install Wizard
-起一个集群的名称，例如Education
-Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
+<meta name="twitter:title" content="用Ambari2管理Hadoop_第二部分：部署">
+<meta name="twitter:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
 
     
     <link rel="alternative" href="/atom.xml" title="Jacken&#39;s Blog" type="application/atom+xml">
@@ -109,7 +100,7 @@ Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选�
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第一部分：部署" itemprop="url">用Ambari2管理Hadoop_第一部分：部署</a>
+      <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第二部分：部署" itemprop="url">用Ambari2管理Hadoop_第二部分：部署</a>
   </h1>
   <p class="article-author">By
        
@@ -129,8 +120,7 @@ Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选�
 		
 		</div>
 		
-		<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。  </p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
+		<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br><a id="more"></a><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png" alt="" title="cluster name"><br>起一个集群的名称，例如<code>Education</code></p>
 <h2 id="Select_stack">Select stack</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png" alt="" title="select stack"><br>如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留<code>redhat6</code>，并根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#本地yum源配置" title="本地yum源配置">第一部分的内容</a>，输入本地的yum源地址：<br>HDP Base URL：</p>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>
@@ -236,7 +226,7 @@ Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选�
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="Hadoop/use-ambari2-manage-hadoop-deploying/" data-title="用Ambari2管理Hadoop_第一部分：部署" data-url="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/"></div>
+	<div class="ds-thread" data-thread-key="Hadoop/use-ambari2-manage-hadoop-deploying/" data-title="用Ambari2管理Hadoop_第二部分：部署" data-url="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/"></div>
 </section>
 
 

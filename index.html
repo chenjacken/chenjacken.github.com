@@ -83,7 +83,7 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第一部分：部署" itemprop="url">用Ambari2管理Hadoop_第一部分：部署</a>
+      <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第二部分：部署" itemprop="url">用Ambari2管理Hadoop_第二部分：部署</a>
   </h1>
   <p class="article-author">By
        
@@ -96,46 +96,12 @@
 </header>
     <div class="article-content">
         
-        <h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。  </p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png" alt="" title="cluster name"><br>起一个集群的名称，例如<code>Education</code></p>
-<h2 id="Select_stack">Select stack</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png" alt="" title="select stack"><br>如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留<code>redhat6</code>，并根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#本地yum源配置" title="本地yum源配置">第一部分的内容</a>，输入本地的yum源地址：<br>HDP Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>
-</code></pre><p>HDP-UTILS Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-UTILS-</span><span class="number">1.1</span>.<span class="number">0</span>.<span class="number">20</span> 
-</code></pre><h1 id="部署规划">部署规划</h1><h2 id="服务规划">服务规划</h2><ul>
-<li><strong>node1：</strong>Zookeeper Server</li>
-<li><strong>node2：</strong>Zookeeper Server</li>
-<li><strong>node3：</strong>Zookeeper Server</li>
-<li><strong>node4：</strong>NameNode、History Server 、ResourceManager、Hive Metastore、HBase Metastore、Oozie Server、DRPC Server、Kafka Broker、Knox Gateway</li>
-<li><strong>node5：</strong>SNameNode、、App Timeline Server、HiveServer2、WebHCat Server、HBase Metastore 、Oozie Server、 Nimbus、Spark History Server、Kafka Broker、Knox Gateway</li>
-<li><strong>node6：</strong>Falcon Server、Storm UI Server、Metrics Collector、client</li>
-<li><strong>node7：</strong>Datanode,NodeManager,Supervisor,RegionServer,Flume</li>
-<li><strong>node8：</strong>Datanode,NodeManager,Supervisor,RegionServer,Flume</li>
-<li><strong>node9：</strong>Datanode,NodeManager,Supervisor,RegionServer,Flume</li>
-</ul>
-<h2 id="安装agent">安装agent</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-options.png" alt="" title="install-options"><br>目标主机输入主机名，一行一台主机，可以使用正则表达式，例如我输入<code>node[1-9].hdp.novalocal</code></p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-confirm-hosts.png" alt="" title="confirm hosts"><br>Ambari会自动安装Ambari agent,并检查主机的环境是否满足要求。<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-host-checks.png" alt="" title="host checks"><br>如果你根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#所有节点基础配置" title="所有节点基础配置">第一部分的内容</a>配置好所有主机，环境检查都会顺利通过。</p>
-<h2 id="选择服务">选择服务</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-choose-services.png" alt="" title="choose services"><br>选择需要部署的服务，因为是测试环境，把所有服务都选上。<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-choose-services-warning.png" alt="" title="choose services warning"><br><strong>Spark</strong>需要依赖HDP2.2.2，不犹如向前进<code>Proceed</code>  </p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-masters.png" alt="" title="assign masters"><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-masters2.png" alt="" title="assign masters"><br>根据服务规划来分配主服务器。</p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-slaves-clients.png" alt="" title="assign slaves clients"><br>根据服务规划来分配从服务器和客户端。</p>
-<h2 id="配置服务">配置服务</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services.png" alt="" title="customize services"><br>红色提示的是需要进行配置的服务。</p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-hive.png" alt="" title="customize hive"><br>配置<code>Hive</code>的数据库。我用的是Mysql独立的数据库主机。按照以下部署进行：  </p>
-<ul>
-<li><strong>安装数据库：</strong>数据库服务器作为独立一台主机，要先安装好mysql数据库</li>
-<li><strong>创建数据库：</strong>创建<code>hive</code>用的数据库和账号密码</li>
-<li><strong>在Ambari服务器配置驱动</strong>例如我的命令是<code>ambari-server setup --jdbc-db=mysql --jdbc-driver=/usr/share/java/mysql-connector-java-5.1.35-bin.jar</code>,JDBC官方驱动包可以在这里下载 <a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="external">http://dev.mysql.com/downloads/connector/j/</a></li>
-<li><strong>在页面填写数据库信息：</strong>在网页填写数据库服务器地址和数据库名称账号密码等信息</li>
-</ul>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-Oozie.png" alt="" title="customize Oozie"><br>配置<code>Oozie</code>的数据库和配置<code>Hive</code>的数据库方法一样。从复的步骤可以省略不做。</p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-knox.png" alt="" title="customize Knox"><br>设置<code>Knox</code>的主密码</p>
-<h2 id="开始部署">开始部署</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-review.png" alt="" title="review"><br>预览服务配置信息，没有错误就进行下一步安装了。</p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-start-test.png" alt="" title="install start test"><br>整个安装进度可以看到，如果出现错误请<code>Retry</code>几次。安装完成会自动启动并测试各种服务是否正常。</p>
-<h1 id="管理Hadoop">管理Hadoop</h1><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png" alt="" title="ambari dashboard"><br>高大上的感觉吧？在这里可以启动，停止服务。增加服务器，增加服务。配置各个服务，且配置信息以版本记录自由切换。 </p>
-
+        <h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br>
         
         
         <p class="article-more-link">
+          
+            <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/#more">Read More</a>
           
        </p>
     </div>

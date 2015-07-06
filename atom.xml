@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-07-06T06:43:00.415Z</updated>
+  <updated>2015-07-06T06:48:01.816Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -15,13 +15,12 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[用Ambari2管理Hadoop_第一部分：部署]]></title>
+    <title><![CDATA[用Ambari2管理Hadoop_第二部分：部署]]></title>
     <link href="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/"/>
     <id>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/</id>
     <published>2015-06-15T17:00:27.000Z</published>
-    <updated>2015-07-06T06:43:00.415Z</updated>
-    <content type="html"><![CDATA[<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。  </p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
+    <updated>2015-07-06T06:48:01.816Z</updated>
+    <content type="html"><![CDATA[<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br><a id="more"></a><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png" alt="" title="cluster name"><br>起一个集群的名称，例如<code>Education</code></p>
 <h2 id="Select_stack">Select stack</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png" alt="" title="select stack"><br>如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留<code>redhat6</code>，并根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#本地yum源配置" title="本地yum源配置">第一部分的内容</a>，输入本地的yum源地址：<br>HDP Base URL：</p>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>
@@ -58,7 +57,8 @@
 <h1 id="管理Hadoop">管理Hadoop</h1><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png" alt="" title="ambari dashboard"><br>高大上的感觉吧？在这里可以启动，停止服务。增加服务器，增加服务。配置各个服务，且配置信息以版本记录自由切换。 </p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-log]]>
+    <![CDATA[<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br>]]>
+    
     </summary>
     
       <category term="ambari" scheme="http://jacken.me/tags/ambari/"/>
