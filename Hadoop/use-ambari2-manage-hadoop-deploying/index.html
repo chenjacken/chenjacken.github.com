@@ -12,12 +12,20 @@
     
 
     
-    <meta name="description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
+    <meta name="description" content="就是这个神奇的网站Apache Ambari是一种基于Web的工具，支持Apache Hadoop集群的供应、管理和监控。Ambari目前已支持大多数Hadoop组件，包括HDFS、MapReduce、Hive、Pig、Hbase、Zookeper、Sqoop和Hcatalog等。 
+Ambari主要给你带来以下内容：  
+
+通过一步一步的安装向导简化了集群供应。
+预先配置好关键的运维指标（met">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Ambari2管理Hadoop_第二部分：部署">
 <meta property="og:url" content="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
-<meta property="og:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
+<meta property="og:description" content="就是这个神奇的网站Apache Ambari是一种基于Web的工具，支持Apache Hadoop集群的供应、管理和监控。Ambari目前已支持大多数Hadoop组件，包括HDFS、MapReduce、Hive、Pig、Hbase、Zookeper、Sqoop和Hcatalog等。 
+Ambari主要给你带来以下内容：  
+
+通过一步一步的安装向导简化了集群供应。
+预先配置好关键的运维指标（met">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png">
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png">
@@ -39,7 +47,11 @@
 <meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用Ambari2管理Hadoop_第二部分：部署">
-<meta name="twitter:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。">
+<meta name="twitter:description" content="就是这个神奇的网站Apache Ambari是一种基于Web的工具，支持Apache Hadoop集群的供应、管理和监控。Ambari目前已支持大多数Hadoop组件，包括HDFS、MapReduce、Hive、Pig、Hbase、Zookeper、Sqoop和Hcatalog等。 
+Ambari主要给你带来以下内容：  
+
+通过一步一步的安装向导简化了集群供应。
+预先配置好关键的运维指标（met">
 
     
     <link rel="alternative" href="/atom.xml" title="Jacken&#39;s Blog" type="application/atom+xml">
@@ -120,7 +132,16 @@
 		
 		</div>
 		
-		<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br><a id="more"></a><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
+		<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><p>Apache Ambari是一种基于Web的工具，支持Apache Hadoop集群的供应、管理和监控。Ambari目前已支持大多数Hadoop组件，包括HDFS、MapReduce、Hive、Pig、Hbase、Zookeper、Sqoop和Hcatalog等。 </p>
+<p><strong>Ambari主要给你带来以下内容：</strong>  </p>
+<ul>
+<li>通过一步一步的安装向导简化了集群供应。</li>
+<li>预先配置好关键的运维指标（metrics），可以直接查看Hadoop Core（HDFS和MapReduce）及相关项目（如HBase、Hive和HCatalog）是否健康。</li>
+<li>支持作业与任务执行的可视化与分析，能够更好地查看依赖和性能。</li>
+<li>通过一个完整的RESTful API把监控信息暴露出来，集成了现有的运维工具。</li>
+<li>用户界面非常直观，用户可以轻松有效地查看信息并控制集群。</li>
+</ul>
+<h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。<br><a id="more"></a><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png" alt="" title="cluster name"><br>起一个集群的名称，例如<code>Education</code></p>
 <h2 id="Select_stack">Select stack</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png" alt="" title="select stack"><br>如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留<code>redhat6</code>，并根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#本地yum源配置" title="本地yum源配置">第一部分的内容</a>，输入本地的yum源地址：<br>HDP Base URL：</p>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>
