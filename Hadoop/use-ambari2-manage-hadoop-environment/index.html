@@ -139,7 +139,7 @@
 <p>所有服务器安装Centos6.6-64Bit-minimal，当然我这里用的是自制的Openstack的Centos6.6-64Bit-minimal镜像。</p>
 <p>我创建云服务器时候，登录验证是采用密钥形式无密码SSH的，所以云服务器之间是可以通过秘钥无密码相互访问SSH的，Or not，你需要配置你服务器之间无密码SSH，请问百度君。</p>
 <h1 id="环境配置">环境配置</h1><p>讲了一堆废话，终于可以上机折腾了，这酸爽…</p>
-<h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体节点的服务器（<code>node1~node9</code>）都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧。</p>
+<h2 id="所有节点基础配置">所有节点基础配置</h2><p>全体节点的服务器（<code>node1~node9</code>）都需要配置以下内容。<br>NND，这么多服务器是否怀念 <code>Puppet</code>，硬着头皮先续个服务器敲命令吧…</p>
 <h3 id="更新系统">更新系统</h3><pre><code><span class="title">yum</span> upgrade -y
 </code></pre><h3 id="禁用Selinux">禁用Selinux</h3><pre><code>vi <span class="regexp">/etc/</span>sysconfig<span class="regexp">/selinux</span>
 </code></pre><p>编辑/etc/sysconfig/selinux文件，把SELINUX的值设置为<code>disabled</code></p>
@@ -221,12 +221,13 @@ cd nginx-<span class="number">1.8</span>.<span class="number">0</span>
 chkconfig <span class="comment">--add nginx</span>
 chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 </code></pre><h3 id="本地源的信息">本地源的信息</h3><p>URLs for the New Repository，要记住，往后需要用到<br>Ambari Base URL：</p>
-<pre><code><span class="string">http:</span><span class="comment">//ambari.hdp.novalocal/centos6/Updates-ambari-2.0.1  </span>
+<pre><code><span class="string">http:</span><span class="comment">//ambari.hdp.novalocal/centos6/Updates-ambari-2.0.1</span>
 </code></pre><p>HDP Base URL：</p>
-<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>  
+<pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-</span><span class="number">2.2</span>.<span class="number">4.2</span>
 </code></pre><p>HDP-UTILS Base URL：</p>
 <pre><code><span class="symbol">http:</span>/<span class="regexp">/ambari.hdp.novalocal/hdp</span><span class="regexp">/centos6/</span><span class="constant">HDP-UTILS-</span><span class="number">1.1</span>.<span class="number">0</span>.<span class="number">20</span>  
-</code></pre><p>把Ambari修改成本地的源。<br>编辑/etc/yum.repos.d/ambari.repo文件，内容如下：</p>
+</code></pre><p>把Ambari修改成本地的源。</p>
+<p>编辑/etc/yum.repos.d/ambari.repo文件，内容如下：</p>
 <pre><code><span class="title">[Updates-ambari-2.0.1]</span>
 <span class="setting">name=<span class="value">ambari-<span class="number">2.0</span>.<span class="number">1</span> - Updates</span></span>
 <span class="setting">baseurl=<span class="value">http://ambari.hdp.novalocal/ambari/centos6/Updates-ambari-<span class="number">2.0</span>.<span class="number">1</span></span></span>
@@ -238,7 +239,7 @@ chkconfig nginx <span class="command"><span class="keyword">on</span></span>
 </code></pre><h2 id="Ambari安装">Ambari安装</h2><p>这部分是在<code>ambari.hdp.novalocal</code>服务器上配置，其他节点无需操作。</p>
 <p>安装Ambari</p>
 <pre><code>yum <span class="operator"><span class="keyword">install</span> ambari-<span class="keyword">server</span></span>
-</code></pre><p>我计划用Mysql作为数据库存储hive和oozie数据，下载Mysql的驱动（<a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="external">http://dev.mysql.com/downloads/connector/j/</a>），解压放在/usr/share/java/mysql-connector-java-5.1.35-bin.jar。<br>在<code>db.hdp.novalocal</code>节点安装和配置Mysql 5.6，并创建名为<code>ambari</code>的数据库，执行<code>ambari.hdp.novalocal</code>上的<code>/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql</code>SQL脚本来初始化表结构。<br>配置Ambari Server:</p>
+</code></pre><p>我计划用Mysql作为数据库存储Ambari、hive和oozie数据，下载Mysql的驱动（<a href="http://dev.mysql.com/downloads/connector/j/" target="_blank" rel="external">http://dev.mysql.com/downloads/connector/j/</a>），解压放在/usr/share/java/mysql-connector-java-5.1.35-bin.jar。<br>在<code>db.hdp.novalocal</code>节点安装和配置Mysql 5.6，并创建名为<code>ambari</code>的数据库，执行<code>ambari.hdp.novalocal</code>上的<code>/var/lib/ambari-server/resources/Ambari-DDL-MySQL-CREATE.sql</code>SQL脚本来初始化表结构。<br>配置Ambari Server:</p>
 <pre><code>ambari-<span class="keyword">server</span> setup -j /usr/java/<span class="keyword">default</span>
 </code></pre><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari-install.png" alt="安装Ambari"><br>根据提示一直按回车，配置数据库时候需要指定<code>db.hdp.novalocal</code>的连接信息，至此，配置<code>Ambari Server</code>成功。</p>
 <h2 id="启动Ambari">启动Ambari</h2><pre><code>chkconfig ambari-server <span class="command"><span class="keyword">on</span></span>
@@ -303,6 +304,14 @@ service ambari-server <span class="built_in">start</span>
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第一部分：部署">
+  <strong>上一篇：</strong><br/>
+  <span>
+  用Ambari2管理Hadoop_第一部分：部署</span>
+</a>
+</div>
+
 
 <div class="next">
 <a href="/Hexo/hello-world/"  title="Hello World">
@@ -340,7 +349,7 @@ service ambari-server <span class="built_in">start</span>
 		<ul>
 		
 		  
-			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>1</sup></a></li>
+			<li><a href="/categories/Hadoop/" title="Hadoop">Hadoop<sup>2</sup></a></li>
 		  
 		
 		  
@@ -355,7 +364,7 @@ service ambari-server <span class="built_in">start</span>
   <div class="tagcloudlist">
     <p class="asidetitle">Tag Cloud</p>
     <div class="tagcloudlist clearfix">
-       <a href="/tags/Hello/" style="font-size: NaNpx;">Hello</a><a href="/tags/Hexo/" style="font-size: NaNpx;">Hexo</a><a href="/tags/ambari/" style="font-size: NaNpx;">ambari</a><a href="/tags/hadoop/" style="font-size: NaNpx;">hadoop</a>
+       <a href="/tags/Hello/" style="font-size: 10px;">Hello</a><a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a><a href="/tags/ambari/" style="font-size: 20px;">ambari</a><a href="/tags/hadoop/" style="font-size: 20px;">hadoop</a>
     </div>
   </div>
 

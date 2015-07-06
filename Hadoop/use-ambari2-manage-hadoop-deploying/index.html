@@ -5,22 +5,50 @@
   <meta charset="UTF-8">
   <meta name="baidu-site-verification" content="amOFAugynl" />
   
-    <title>Jacken&#39;s Blog</title>
+    <title>用Ambari2管理Hadoop_第一部分：部署 | Jacken&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Jacken">
     
 
     
-    <meta name="description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Jacken's Blog">
-<meta property="og:url" content="http://jacken.me/index.html">
+    <meta name="description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
+创建一个集群，点击Launch Install Wizard
+起一个集群的名称，例如Education
+Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Ambari2管理Hadoop_第一部分：部署">
+<meta property="og:url" content="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/index.html">
 <meta property="og:site_name" content="Jacken's Blog">
-<meta property="og:description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
+<meta property="og:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
+创建一个集群，点击Launch Install Wizard
+起一个集群的名称，例如Education
+Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-options.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-confirm-hosts.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-host-checks.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-choose-services.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-choose-services-warning.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-masters.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-masters2.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-assign-slaves-clients.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-hive.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-Oozie.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-customize-services-knox.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-review.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-start-test.png">
+<meta property="og:image" content="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Jacken's Blog">
-<meta name="twitter:description" content="Jacken的技术博客，学习和分享云计算，大数据，架构设计，应用开发，运维技术">
+<meta name="twitter:title" content="用Ambari2管理Hadoop_第一部分：部署">
+<meta name="twitter:description" content="就是这个神奇的网站创建集群访问Ambari网址，看到登录界面：用默认的用户名和密码admin/admin登录。  
+创建一个集群，点击Launch Install Wizard
+起一个集群的名称，例如Education
+Select stack如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留redhat6，并根据第一部分的内容，输入本地的yum源地址：HDP Base URL">
 
     
     <link rel="alternative" href="/atom.xml" title="Jacken&#39;s Blog" type="application/atom+xml">
@@ -75,12 +103,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/Hadoop/use-ambari2-manage-hadoop-deploying/" title="用Ambari2管理Hadoop_第一部分：部署" itemprop="url">用Ambari2管理Hadoop_第一部分：部署</a>
@@ -94,9 +120,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。  </p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#就是这个神奇的网站"><span class="toc-number">1.</span> <span class="toc-text">就是这个神奇的网站</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建集群"><span class="toc-number">1.1.</span> <span class="toc-text">创建集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select_stack"><span class="toc-number">1.2.</span> <span class="toc-text">Select stack</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署规划"><span class="toc-number">2.</span> <span class="toc-text">部署规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务规划"><span class="toc-number">2.1.</span> <span class="toc-text">服务规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装agent"><span class="toc-number">2.2.</span> <span class="toc-text">安装agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择服务"><span class="toc-number">2.3.</span> <span class="toc-text">选择服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置服务"><span class="toc-number">2.4.</span> <span class="toc-text">配置服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始部署"><span class="toc-number">2.5.</span> <span class="toc-text">开始部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#管理Hadoop"><span class="toc-number">3.</span> <span class="toc-text">管理Hadoop</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="就是这个神奇的网站">就是这个神奇的网站</h1><h2 id="创建集群">创建集群</h2><p>访问Ambari网址，看到登录界面：<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-login.png" alt="" title="Ambari login"><br>用默认的用户名和密码<code>admin/admin</code>登录。  </p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-create-cluster.png" alt="" title="create cluster"><br>创建一个集群，点击<code>Launch Install Wizard</code></p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-cluster-name.png" alt="" title="cluster name"><br>起一个集群的名称，例如<code>Education</code></p>
 <h2 id="Select_stack">Select stack</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-select-stack.png" alt="" title="select stack"><br>如图，选择HDP的版本，我用的是Centos6，把其他勾选去掉，只保留<code>redhat6</code>，并根据<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#本地yum源配置" title="本地yum源配置">第一部分的内容</a>，输入本地的yum源地址：<br>HDP Base URL：</p>
@@ -132,14 +165,9 @@
 <h2 id="开始部署">开始部署</h2><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-review.png" alt="" title="review"><br>预览服务配置信息，没有错误就进行下一步安装了。</p>
 <p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-install-start-test.png" alt="" title="install start test"><br>整个安装进度可以看到，如果出现错误请<code>Retry</code>几次。安装完成会自动启动并测试各种服务是否正常。</p>
 <h1 id="管理Hadoop">管理Hadoop</h1><p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/ambari2-dashboard.png" alt="" title="ambari dashboard"><br>高大上的感觉吧？在这里可以启动，停止服务。增加服务器，增加服务。配置各个服务，且配置信息以版本记录自由切换。 </p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 <div class="article-categories">
@@ -157,169 +185,70 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-	  	<span></span>
-		<a href="/Hadoop/use-ambari2-manage-hadoop-deploying/#comments" class="ds-thread-count comments-count-link" data-thread-key="Hadoop/use-ambari2-manage-hadoop-deploying/" data-count-type="comments">&nbsp;</a>
-	
+	<div class="share-jiathis">
+	  
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_googleplus"></a>
+	<a class="jiathis_button_douban"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
 </div>
+<script type="text/javascript" >
+    var jiathis_config={
+    data_track_clickback:true,
+    sm:"copy,renren,cqq",
+    pic:"",
+    summary:"",
+     ralateuid:{"tsina":"1868139773"},hideMore:false}
+    
+  </script> 
+<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=
+891939" charset="utf-8"></script>      
+
+	 </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Hadoop/use-ambari2-manage-hadoop-environment/" title="用Ambari2管理Hadoop_第一部分：环境" itemprop="url">用Ambari2管理Hadoop_第一部分：环境</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jacken" target="_blank" itemprop="author">Jacken</a>
-		
-  <p class="article-time">
-    <time datetime="2015-06-06T13:33:36.000Z" itemprop="datePublished"> Published 2015-06-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="本系列文章说明">本系列文章说明</h1><p>当我脑海里萌发要写这系列的文章时候，其实我是抗拒的！因为我觉得呀……这是大数据呀，我一个屌丝码农哪有这个能耐。但是又觉得博客总得写点内容，装逼装逼也得附和社会呀，加上看了看<code>Evernote</code>记录的内容甚乱，必须写……后来写着写着真觉得很DUANG~DUANG~DUANG~…..<br>其实在项目中用到Hadoop的功能甚少，一个HDFS来存储非结构数据，一个是Mapreduce来分布计算处理数据。然而，就算写个简单的<code>Hello world</code>也得把环境搭建起来。所以，本系列的文章，权当我从0开始学习Hadoop的笔记，希望能和像我一样的新手分享经验，同时也希望得到高人指点一二三四五… </p>
-<hr>
-<p><strong>本部分内容</strong></p>
-<ul>
-<li>Hadoop生态圈</li>
-<li>本系类文章的环境介绍</li>
-<li>Ambari安装<ul>
-<li>所有节点基础配置</li>
-<li>本地yum源配置</li>
-<li>Ambari安装</li>
-</ul>
-</li>
-<li>一个神奇的网址
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/Hadoop/use-ambari2-manage-hadoop-environment/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Hadoop/">Hadoop</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/ambari/">ambari</a><a href="/tags/hadoop/">hadoop</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
-	  	<span></span>
-		<a href="/Hadoop/use-ambari2-manage-hadoop-environment/#comments" class="ds-thread-count comments-count-link" data-thread-key="Hadoop/use-ambari2-manage-hadoop-environment/" data-count-type="comments">&nbsp;</a>
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/Hadoop/use-ambari2-manage-hadoop-environment/"  title="用Ambari2管理Hadoop_第一部分：环境">
+ <strong>下一篇：</strong><br/> 
+ <span>用Ambari2管理Hadoop_第一部分：环境
+</span>
+</a>
+</div>
+
+</nav>
+
 	
-</div>
-
-</footer>
-
-
-    </article>
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="Hadoop/use-ambari2-manage-hadoop-deploying/" data-title="用Ambari2管理Hadoop_第一部分：部署" data-url="http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/"></div>
+</section>
 
 
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Hexo/hello-world/" title="Hello World" itemprop="url">Hello World</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Jacken" target="_blank" itemprop="author">Jacken</a>
-		
-  <p class="article-time">
-    <time datetime="2015-05-14T18:44:45.000Z" itemprop="datePublished"> Published 2015-05-15</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="又一个博客">又一个博客</h1><p>以前一直有写博客，博客使用<code>WordPress</code>搭建的。写一段时间后，写作热情下降且空间过期，懒得继续折腾而终止，总是持续不了。</p>
-<p>最近接触很多新的知识和技术，一直记录在<code>Evernote</code>，且记录得有些凌乱，借此重出江湖，借此整理好感兴趣的内容并发表到博客上，方便自己查看同时也有一丝开源分享的精神，互相学习吧。</p>
-<p>理所当然，本博客所有文章默认都遵循 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://licensebuttons.net/l/by-nc-sa/3.0/88x31.png" alt="" title="BY-NC-SA"></a>；如发现文章对你有侵权嫌疑，请联系我。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/Hexo/hello-world/#more">Read More</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/Hello/">Hello</a><a href="/tags/Hexo/">Hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/Hexo/hello-world/#comments" class="ds-thread-count comments-count-link" data-thread-key="Hexo/hello-world/" data-count-type="comments">&nbsp;</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#就是这个神奇的网站"><span class="toc-number">1.</span> <span class="toc-text">就是这个神奇的网站</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建集群"><span class="toc-number">1.1.</span> <span class="toc-text">创建集群</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Select_stack"><span class="toc-number">1.2.</span> <span class="toc-text">Select stack</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#部署规划"><span class="toc-number">2.</span> <span class="toc-text">部署规划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#服务规划"><span class="toc-number">2.1.</span> <span class="toc-text">服务规划</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装agent"><span class="toc-number">2.2.</span> <span class="toc-text">安装agent</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#选择服务"><span class="toc-number">2.3.</span> <span class="toc-text">选择服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置服务"><span class="toc-number">2.4.</span> <span class="toc-text">配置服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始部署"><span class="toc-number">2.5.</span> <span class="toc-text">开始部署</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#管理Hadoop"><span class="toc-number">3.</span> <span class="toc-text">管理Hadoop</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -465,8 +394,36 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
   });
 });
 </script>
@@ -591,4 +548,4 @@ _ts(option);
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>

@@ -2,18 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-deploying/</loc>
+    <lastmod>2015-07-06T06:43:00.415Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://jacken.me/about/index.html</loc>
+    <lastmod>2015-07-06T04:19:19.101Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://jacken.me/Hadoop/use-ambari2-manage-hadoop-environment/</loc>
-    <lastmod>2015-06-09T05:56:04.125Z</lastmod>
+    <lastmod>2015-06-09T06:47:41.626Z</lastmod>
   </url>
   
   <url>
     <loc>http://jacken.me/Hexo/hello-world/</loc>
     <lastmod>2015-05-24T18:04:52.238Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://jacken.me/about/index.html</loc>
-    <lastmod>2015-05-24T10:23:33.309Z</lastmod>
   </url>
   
   <url>
