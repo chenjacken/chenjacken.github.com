@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-08-02T16:53:00.585Z</updated>
+  <updated>2015-08-02T16:57:36.492Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://jacken.me/openstack/centos/create-centos6-image-for-openstack/"/>
     <id>http://jacken.me/openstack/centos/create-centos6-image-for-openstack/</id>
     <published>2015-08-01T10:34:59.000Z</published>
-    <updated>2015-08-02T16:53:00.585Z</updated>
+    <updated>2015-08-02T16:57:36.492Z</updated>
     <content type="html"><![CDATA[<h1 id="制作Openstack的Linux镜像的基础知识">制作Openstack的Linux镜像的基础知识</h1><h2 id="镜像的磁盘容器格式">镜像的磁盘容器格式</h2><ul>
 <li><strong>RAW：</strong>原始的格式，一个纯二进制镜像光盘映像，非常便携，一个字：裸。由于原生的裸格式，不支持快照</li>
 <li><strong>QCOW2：</strong>qcow2(QEMU copy-on-write version 2)是KVN虚拟化常用的格式，附带有多种功能，例如大小经过压缩、支持快照、性能上接近raw、支持zlib的磁盘压缩、支持AES的加密等</li>
