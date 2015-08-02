@@ -4,7 +4,7 @@
   <subtitle><![CDATA[所谓天才，只不过是把别人喝咖啡的功夫都用在工作上了]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://jacken.me/"/>
-  <updated>2015-08-02T16:28:02.842Z</updated>
+  <updated>2015-08-02T16:46:08.252Z</updated>
   <id>http://jacken.me/</id>
   
   <author>
@@ -15,12 +15,12 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[为openstack制作centos6镜像]]></title>
+    <title><![CDATA[为Openstack制作centos6镜像]]></title>
     <link href="http://jacken.me/openstack/centos/create-centos6-image-for-openstack/"/>
     <id>http://jacken.me/openstack/centos/create-centos6-image-for-openstack/</id>
     <published>2015-08-01T10:34:59.000Z</published>
-    <updated>2015-08-02T16:28:02.842Z</updated>
-    <content type="html"><![CDATA[<h1 id="制作openstack的Linux镜像的技术知识">制作openstack的Linux镜像的技术知识</h1><h2 id="镜像的磁盘容器格式">镜像的磁盘容器格式</h2><ul>
+    <updated>2015-08-02T16:46:08.252Z</updated>
+    <content type="html"><![CDATA[<h1 id="制作Openstack的Linux镜像的基础知识">制作Openstack的Linux镜像的基础知识</h1><h2 id="镜像的磁盘容器格式">镜像的磁盘容器格式</h2><ul>
 <li><strong>RAW：</strong>原始的格式，一个纯二进制镜像光盘映像，非常便携，一个字：裸。由于原生的裸格式，不支持快照</li>
 <li><strong>QCOW2：</strong>qcow2(QEMU copy-on-write version 2)是KVN虚拟化常用的格式，附带有多种功能，例如大小经过压缩、支持快照、性能上接近raw、支持zlib的磁盘压缩、支持AES的加密等</li>
 <li><strong>AMI：</strong>Amazon Machine Image</li>
@@ -70,12 +70,12 @@ chown  -R qemu:qemu *
 <p>看到这个界面就熟悉了，基本和平时安装系统一样进行下去，但又一下几点的要求：<br><strong>网络的配置：</strong><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-network.jpg" alt="" title="network"><br>启用IPv4的DHCP</p>
 <p><strong>存储设备：</strong><br>在选择存储设备的类型时,选择基本存储设备（<code>Basic Storage Devices.</code>）。 </p>
 <p><strong>磁盘分区：</strong><br>如果不了解这块，选择默认分区方。</p>
-<p><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-reboot.jpg" alt="" title="reboot"><br>完成系统安装需要重启虚拟机。重启前卸载CD-ROM:</p>
+<p><strong>完成操作系统的安装：</strong><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-reboot.jpg" alt="" title="reboot"><br>完成系统安装需要重启虚拟机。重启前卸载CD-ROM:</p>
 <pre><code>virsh attach-disk --<span class="built_in">type</span> cdrom --<span class="literal">mode</span> readonly <span class="constant">Cent</span>OS-<span class="number">6.6</span>-x86_64 <span class="string">""</span> hdc
 </code></pre><p>使用上面<code>virsh</code>命令可以弹出光驱</p>
 <h3 id="操作系统的一些配置">操作系统的一些配置</h3><p>完成centos系统的安装后，用SSH客户端（例如<code>PuTTY</code>）链接上虚拟机，修改操作系统的一些配置的</p>
 <p><strong>修改网络配置</strong></p>
-<p>Disable the zeroconf route：</p>
+<p><strong><em>Disable the zeroconf route：</em></strong></p>
 <pre><code>echo <span class="string">"NOZEROCONF=yes"</span> <span class="prompt">&gt;&gt; </span>/etc/sysconfig/network
 </code></pre><p><strong>安装ACPI服务</strong></p>
 <pre><code>yum install -y acpid
@@ -148,7 +148,7 @@ yum <span class="keyword">install</span> -y cloud-utils cloud-init</span>
 <p>当然你可以用命令<code>glance add</code>创建镜像,这部分略！</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h1 id="制作openstack的Linux镜像的技术知识">制作openstack的Linux镜像的技术知识</h1><h2 id="镜像的磁盘容器格式">镜像的磁盘容器格式</h2><ul>
+    <![CDATA[<h1 id="制作Openstack的Linux镜像的基础知识">制作Openstack的Linux镜像的基础知识</h1><h2 id="镜像的磁盘容器格式">镜像的磁盘容器格式</h2><ul>
 <li><strong>RAW：</strong>原始的格式，一个纯二进制镜像光盘映像，非常便携，一个字：裸。由于原生的裸格式，不支持快照</li>
 <li><strong>QCOW2：</strong>qcow2(QEMU copy-on-write version 2)是KVN虚拟化常用的格式，附带有多种功能，例如大小经过压缩、支持快照、性能上接近raw、支持zlib的磁盘压缩、支持AES的加密等</li>
 <li><strong>AMI：</strong>Amazon Machine Image</li>
