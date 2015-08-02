@@ -204,7 +204,8 @@ fi
 <pre><code>yum <span class="operator"><span class="keyword">install</span> -y  http://download.fedoraproject.org/pub/epel/<span class="number">6</span>/x86_64/epel-<span class="keyword">release</span>-<span class="number">6</span>-<span class="number">8.</span>noarch.rpm
 yum <span class="keyword">install</span> -y cloud-utils cloud-init</span>
 </code></pre><p><code>cloud-init</code>的配置文件在<code>/etc/cloud/cloud.cfg</code>,编辑里面配置，定制自己所需要的功能。我的配置信息是：</p>
-
+<figure class="highlight ruby"><figcaption><span>cloud.cfg /code/cloud-init/cloud.cfg</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">_</span>.compact([<span class="number">0</span>, <span class="number">1</span>, <span class="keyword">false</span>, <span class="number">2</span>, <span class="string">''</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="status">=&gt;</span> [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p><a href="/code/cloud-init/cloud.cfg" title="cloud.cfg">cloud.cfg</a></p>
 <p><strong>其中几点说明下：</strong></p>
 <p><strong>1，</strong>允许<code>root</code>登录和禁止<code>password</code>验证</p>
 <pre><code><span class="attribute">disable_root</span>: <span class="string">0</span>
