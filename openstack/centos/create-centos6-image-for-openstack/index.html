@@ -161,7 +161,7 @@ chown  -R qemu:qemu *
 </code></pre><h2 id="通过vnc界面安装centos">通过vnc界面安装centos</h2><h3 id="用VNC客户端安装Centos系统">用VNC客户端安装Centos系统</h3><p>查看虚拟机的vnc链接信息</p>
 <pre><code><span class="title">Virsh</span> vncdisplay CentOS-<span class="number">6</span>.<span class="number">6</span>-x86_64
 </code></pre><p>然后用vncview客户端链接上（vncview下载地址：<a href="http://www.realvnc.com/download/viewer/" target="_blank" rel="external">http://www.realvnc.com/download/viewer/</a>）<br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install1.jpg" alt="" title="centos6.6 install">  </p>
-<p>看到这个界面就熟悉了，基本和平时安装系统一样进行下去，但又一下几点的要求：<br><strong>网络的配置：</strong><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-network.jpg" alt="" title="network"><br>启用IPv4的DHCP</p>
+<p>看到这个界面就熟悉了，基本和平时安装系统一样进行下去，但有以下几点的要求：<br><strong>网络的配置：</strong><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-network.jpg" alt="" title="network"><br>启用IPv4的DHCP</p>
 <p><strong>存储设备：</strong><br>在选择存储设备的类型时,选择基本存储设备（<code>Basic Storage Devices.</code>）。 </p>
 <p><strong>磁盘分区：</strong><br>如果不了解这块，选择默认分区方。</p>
 <p><strong>完成操作系统的安装：</strong><br><img src="http://7xj3vi.com1.z0.glb.clouddn.com/centos6.6-install-reboot.jpg" alt="" title="reboot"><br>完成系统安装需要重启虚拟机。重启前卸载CD-ROM:</p>
@@ -175,7 +175,7 @@ chown  -R qemu:qemu *
 <pre><code>yum install -y acpid
 chkconfig acpid <span class="function_start"><span class="keyword">on</span></span>
 </code></pre><p>这样可以通过web界面控制虚拟化程序来重启或者关闭虚拟机实例</p>
-<p><strong>Configure console</strong><br><code>nova console</code>命令读取到centos的log，需要在<code>/boot/grub/menu.lst</code>文件下增加一下的内容：</p>
+<p><strong>Configure console</strong><br><code>nova console</code>命令读取到centos的log，需要在<code>/boot/grub/menu.lst</code>文件下增加以下的内容：</p>
 <pre><code>serial <span class="variable">--unit=</span><span class="number">0</span> <span class="variable">--speed=</span><span class="number">115200</span>
 terminal <span class="variable">--timeout=</span><span class="number">10</span> console serial
 <span class="comment"># Edit the kernel line to add the console entries</span>
@@ -220,7 +220,7 @@ yum <span class="keyword">install</span> -y cloud-utils cloud-init</span>
 </code></pre><p>但是遇到一个问题，虚拟机实例创建完，需要重启一次系统才能调整根文件系统的大小，<strong>请高手指点</strong></p>
 <p><strong>3，</strong>数据源的获取方式</p>
 <pre><code><span class="rule"><span class="attribute">datasource_list</span>:<span class="value"> [<span class="string">'ConfigDrive'</span>,<span class="string">'Ec2'</span>,<span class="string">'NoCloud'</span>]</span></span>
-</code></pre><p>我配置了<code>ConfigDrive</code>为先。这个需要修改openstack的nova的配置文件，开启<code>Config Drive</code>。<br>简单说明下，在所有计算节点，修改<code>nova.conf</code>配置,增加或修改一下内容：</p>
+</code></pre><p>我配置了<code>ConfigDrive</code>为先。这个需要修改openstack的nova的配置文件，开启<code>Config Drive</code>。<br>简单说明下，在所有计算节点，修改<code>nova.conf</code>配置,增加或修改以下内容：</p>
 <pre><code><span class="setting">force_config_drive=<span class="value"><span class="keyword">True</span></span></span>
 <span class="setting">config_drive_format=<span class="value">iso9660</span></span>
 </code></pre><h2 id="创建快照和恢复">创建快照和恢复</h2><p>镜像创建快照，目的是可以让镜像创建多种环境版本，例如这个快照是集成LAMP，那个快照安装了Mysql等。恢复到指定的快照，可以修复完成发现的问题或创建另一种环境的快照，再发布打包成镜像。</p>
